@@ -1,0 +1,23 @@
+name: Approved development proposal
+description: Record a proposed change before approval
+title: "Proposal: "
+labels: [proposal]
+body:
+  - type: textarea
+    attributes:
+      label: Scope
+      description: User and technical outcomes requested.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Exclusions
+      description: Work explicitly outside the proposal.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Validation
+      description: Checks and browser flows required before merge.
+    validations:
+      required: true
