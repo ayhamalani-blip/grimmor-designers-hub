@@ -19,5 +19,5 @@
 - **Scope:** Make the seven non-logo Start Here Q&A links open only their related Design Guidelines section; retain the Logo Guidelines destination for “Where does the logo go?”; add an always-visible “Back to Homepage” control to all four resource pages and focused guideline views.
 - **Exclusions:** Changes to the guideline wording, visual redesign, resource names, asset files, custom domain, or release tag.
 - **Design or product notes:** Reuse existing Grimmor editorial styling; focused sections must render from the existing Design Guidelines content rather than duplicated copies.
-- **Implementation PR:** Pending
+- **Implementation PR:** #1 — pending GitHub Actions verification and merge.
 - **Validation:** Confirm all seven Q&A destinations isolate the expected section, the logo Q&A remains on Logo Guidelines, and every resource view returns to the home page.
