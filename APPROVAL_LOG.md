@@ -30,5 +30,5 @@
 - **Scope:** Add the supplied Grimmor Social Media Design Guidelines as a public fifth resource on the Designers Hub. Publish the complete 19-section chapter with its required local fonts, imagery, SVGs, and runtime dependencies; add a Back to Homepage action.
 - **Exclusions:** Changes to the supplied chapter’s editorial content, platform guidance claims, imagery direction, developer-file catalogue, existing resource pages, custom domain, release tag, or repository visibility.
 - **Design or product notes:** Use the supplied Claude artifact as the publishing source; retain the Grimmor white, ink, and restrained vermilion document treatment. Remove third-party artifact branding from the public Hub page.
-- **Implementation PR:** Pending
+- **Implementation PR:** #3 — validation pending before merge to `main`.
 - **Validation:** Verify the new Resources item opens the chapter; the chapter exposes all 19 numbered sections and Back to Homepage; every local image, SVG, font, and runtime file resolves; existing static-site checks pass.
