@@ -1,0 +1,1072 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><title>Grimmor — Social Media Design Guidelines</title>
+<style>:root{
+  /* Published version of this design system, in two halves on purpose.
+     This token ships with the token CSS; SYSTEM_VERSION in
+     components/system/SystemVersion.jsx compiles into _ds_bundle.js.
+     A consumer that copies one half and not the other ends up with two
+     different values, and SystemVersion.check() reports it in the console
+     instead of the mismatch staying invisible.
+     Bump BOTH in the same change, never one alone. */
+  --ds-version:"2026.09.15.1"; /* @kind other */
+}
+
+/* Grimmor webfonts. No binaries were supplied with the brand package; the three
+   specified families are all available on Google Fonts and are loaded from there.
+   Jost is the display face, DM Sans is functional, Cormorant Garamond Italic is the
+   editorial accent. Space Grotesk had no remaining role and is no longer loaded.
+   Swap these @import lines for local @font-face rules when licensed files land. */
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/3125a7fa-fe1f-4d5c-8e6d-83a956e3b1ba.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/bfa4c762-750c-4866-a0eb-07e0dbb86136.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/c8528789-5835-4908-8419-b5aac4d1d561.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/1b74f8ee-a0ff-4968-a9b2-608ab4620449.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/32ba76ac-ab39-48d9-9fdd-9425098fd322.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/3125a7fa-fe1f-4d5c-8e6d-83a956e3b1ba.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/bfa4c762-750c-4866-a0eb-07e0dbb86136.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/c8528789-5835-4908-8419-b5aac4d1d561.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/1b74f8ee-a0ff-4968-a9b2-608ab4620449.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/32ba76ac-ab39-48d9-9fdd-9425098fd322.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/3125a7fa-fe1f-4d5c-8e6d-83a956e3b1ba.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/bfa4c762-750c-4866-a0eb-07e0dbb86136.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/c8528789-5835-4908-8419-b5aac4d1d561.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/1b74f8ee-a0ff-4968-a9b2-608ab4620449.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/32ba76ac-ab39-48d9-9fdd-9425098fd322.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/2d496f85-1d19-42ec-ba23-33e708b7816c.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/3e93fef9-e6c4-4152-9301-c888852fa420.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/2d496f85-1d19-42ec-ba23-33e708b7816c.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/3e93fef9-e6c4-4152-9301-c888852fa420.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/2d496f85-1d19-42ec-ba23-33e708b7816c.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/3e93fef9-e6c4-4152-9301-c888852fa420.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/2d496f85-1d19-42ec-ba23-33e708b7816c.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/3e93fef9-e6c4-4152-9301-c888852fa420.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/ce27e899-e80b-4423-acdf-a859919f8aea.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/20f9550f-cd09-46b0-bcd4-ac403a29dc26.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/4bd4b102-3063-4855-997f-b0ad0d65df8e.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/ce27e899-e80b-4423-acdf-a859919f8aea.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/20f9550f-cd09-46b0-bcd4-ac403a29dc26.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/4bd4b102-3063-4855-997f-b0ad0d65df8e.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/ce27e899-e80b-4423-acdf-a859919f8aea.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/20f9550f-cd09-46b0-bcd4-ac403a29dc26.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/4bd4b102-3063-4855-997f-b0ad0d65df8e.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/ce27e899-e80b-4423-acdf-a859919f8aea.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/20f9550f-cd09-46b0-bcd4-ac403a29dc26.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/social-media-guidelines/4bd4b102-3063-4855-997f-b0ad0d65df8e.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+:root{
+  /* Base palette — the complete Grimmor colour set. Nothing else is brand-legal. */
+  --canvas-white:#FFFFFF;
+  --quiet-surface:#F6F6F4;
+  --ink:#151515;
+  --ink-secondary:#5E5E5B;
+  --muted:#A7A7A2;
+  --divider:#E2E2DE;
+  --vermilion:#FF4F3D;
+
+  /* Semantic aliases */
+  --surface-screen:var(--canvas-white);
+  --surface-sheet:var(--canvas-white);
+  --surface-field:var(--canvas-white);
+  --surface-quiet:var(--quiet-surface);
+  --surface-image-ground:var(--quiet-surface);
+  --surface-ink:var(--ink);
+  --surface-signal:var(--vermilion);
+
+  --text-primary:var(--ink);
+  --text-secondary:var(--ink-secondary);
+  --text-muted:var(--muted);
+  --text-on-ink:var(--canvas-white);
+  /* Deliberate contrast trade: white on vermilion measures ~3.0:1 against ink's ~7.4:1.
+     Clears 3:1 for headline-scale type, not the 4.5:1 set for text — and button labels
+     are 11px. Taken for the signal colour's legibility as a filled action. */
+  --text-on-signal:var(--canvas-white);
+  --text-signal:var(--vermilion);
+  --text-price-original:var(--muted);
+  --text-price-sale:var(--vermilion);
+
+  --border-hairline:var(--divider);
+  /* The outer edge of a product plate. Deliberately fainter than a hairline: a plate's
+     edge only has to separate white from white, so it sits at 28% of divider grey.
+     Its own token because a plate edge and a divider rule are separate ideas — change
+     one without silently restyling the other. */
+  --border-plate:rgba(226,226,222,0.28);
+  /* Full ink, not "a firmer hairline". Only for the unchecked checkbox box, the
+     underline field's baseline and the outline button. Never a card or plate edge —
+     a 1px black box next to a 2px vermilion selected edge reads heavier than the
+     selected state. Unselected surfaces take --border-hairline or --border-plate. */
+  --border-strong:var(--ink);
+  --border-selected:var(--vermilion);
+
+  --icon-active:var(--ink);
+  --icon-inactive:var(--muted);
+  --icon-on-image:var(--canvas-white);
+
+  /* Frosted glass — footer tray, Try On control, Mira sheet */
+  --glass-fill:rgba(255,255,255,0.72);
+  --glass-fill-strong:rgba(255,255,255,0.86);
+  --glass-rim:rgba(255,255,255,0.65);
+  --glass-rim-bright:rgba(255,255,255,0.92);   /* footer tray edge, Create disc ring */
+  --glass-blur:20px;
+
+  /* Micro-halo for white icons/labels over pale photography. Layered 1–2px local soft
+     charcoal, per the approved white-on-light control reference: tight, offset down,
+     never a backing card or a full-width fade. */
+  --halo-on-image:0 1px 2px rgba(21,21,21,0.80),0 0 2px rgba(21,21,21,0.65),0 0 1px rgba(21,21,21,0.50);
+  /* Text halo for in-image labels: one extra 2px layer over the glyph halo, so a
+     white name or micro-label stays crisp on pale photography. */
+  --halo-on-image-text:0 1px 2px rgba(21,21,21,0.80),0 0 2px rgba(21,21,21,0.65),0 0 2px rgba(21,21,21,0.55),0 0 1px rgba(21,21,21,0.50);
+  --halo-on-image-glyph:drop-shadow(0 1px 1.5px rgba(21,21,21,0.80)) drop-shadow(0 0 1.5px rgba(21,21,21,0.60)); /* @kind other */
+}
+
+:root{
+  --font-display:"Jost",Arial,sans-serif;
+  --font-functional:"DM Sans",Arial,sans-serif;
+  --font-accent:"Cormorant Garamond",Georgia,serif;
+
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-semibold:600;
+
+  /* Display XL — onboarding statements, 2–3 lines */
+  --type-display-xl-size:28px;
+  --type-display-xl-line:30px;
+  --type-display-xl-tracking:-0.01em; /* Jost sets looser than the old face */
+  /* Display L — page headline / major reveal */
+  --type-display-l-size:22px;
+  --type-display-l-line:25px;
+  --type-display-l-tracking:-0.045em;
+  /* Section title — shelves, product areas */
+  --type-section-size:15px;
+  --type-section-line:18px;
+  --type-section-tracking:-0.025em;
+  /* Body */
+  --type-body-size:14px;
+  --type-body-line:21px;
+  --type-body-tracking:0em; /* zero-valued length tokens carry a unit — see spacing.css */
+  /* UI label — buttons, fields, compact controls */
+  --type-label-size:11px;
+  --type-label-line:14px;
+  --type-label-tracking:0.10em;
+  /* Navigation label — canonical footer */
+  --type-nav-size:7px;
+  --type-nav-line:9px;
+  --type-nav-tracking:0.06em;
+  /* Eyebrow / micro-label — NEW, progress, category context */
+  --type-eyebrow-size:8px;
+  --type-eyebrow-line:10px;
+  --type-eyebrow-tracking:0.10em;
+  /* Card meta — brand line on a product plate */
+  --type-meta-size:10px;
+  --type-meta-line:13px;
+  --type-meta-tracking:0.02em;
+  /* Price pair on a product plate */
+  --type-price-original-size:10px; /* struck through, muted */
+  --type-price-sale-size:11px;     /* vermilion, semibold */
+  /* Micro control label — TRY ON, NEW */
+  --type-micro-size:8px;
+  --type-micro-line:10px;
+  --type-micro-tracking:0.08em;
+  /* Mira sheet header lockup — MIRA set beside the mark, not a type role */
+  --type-mark-size:18px;
+  --type-mark-tracking:0.10em;
+  /* Tag — credit / price chips and icon badges. A glyph-count surface, not a label:
+     11px is the label size, and a label that will not fit does not drop to 9px. */
+  --type-tag-size:9px;
+  --type-tag-line:14px;
+  --type-tag-tracking:0.04em;
+  /* Field input — 17px, above the iOS zoom threshold */
+  --type-field-size:17px;
+  /* Wide tab label — full-width tab row ONLY, at two or three segments, where 11px reads
+     undersized against the divider. At four or more segments the row returns to the 11px
+     label step: four 13px labels do not fit 390px and compact labels never wrap. A compact
+     or columnar tab also returns to 11px. Not a general step: 11px feeling tight does not
+     earn 13px. */
+  --type-tab-size:13px;
+  /* Garment tile price — the Fitting Room rail tile only, a step above the plate's 11px
+     sale price because the tile carries no brand line to anchor it. Single role. */
+  --type-tile-price-size:12px;
+  /* Wordmark lockup — the mark carries its own scale */
+  --type-wordmark-compact-size:15px;
+  --type-wordmark-compact-tracking:0.20em;
+  --type-wordmark-size:22px;
+  --type-wordmark-tracking:0.16em;
+  --type-wordmark-large-size:34px;
+  --type-wordmark-large-tracking:0.12em;
+  /* Editorial accent — one sparse phrase */
+  --type-accent-size:21px;
+  --type-accent-line:23px;
+  --type-accent-tracking:0em;
+}
+
+:root{
+  --grid-base:4px;
+  --space-1:4px;
+  --space-2:8px;   /* icon to adjacent label */
+  --space-3:12px;  /* compact control internal gap */
+  --space-4:16px;  /* related content blocks */
+  --space-6:24px;  /* primary content groups */
+  --space-8:32px;  /* major screen sections */
+  --space-12:48px; /* editorial chapter break */
+
+  /* Masonry / plate grid — asymmetric so a caption never sits level with a neighbour's
+     image. That holds for a grid of UNIFORM plates, where both columns advance in
+     lockstep. A mixed-height feed — 9:16 look cards interleaved with square product
+     plates — falls out of step on its own, so the 28px row gap buys nothing there and
+     only costs scroll: five cards a column adds 64px of travel inside a 763px content
+     area. A mixed-height feed uses --grid-column-gap in both axes. */
+  --grid-column-gap:12px;
+  --grid-row-gap:28px; /* uniform plate grids only */
+  /* Scroll padding so the floating tray never overlaps the last plate */
+  --scroll-bottom-inset:100px;
+
+  /* Viewport + reading column, 390 × 844 logical px reference.
+     The 844 INCLUDES the device chrome, so usable content is 763px. */
+  --viewport-width:390px;
+  --viewport-height:844px;
+  --content-height:763px;
+  --gutter:20px;
+  --gutter-editorial:32px;  /* text-dominant screens where the column is the composition */
+  --gutter-compact:16px;
+  --column:350px;
+  --column-editorial:326px;
+  /* Onboarding only: the header and the progress rule beneath it hold a fixed edge
+     regardless of the body gutter, so persistent chrome never shifts between steps.
+     Optical — a back chevron is an 18px glyph in a 44px box, so the box needs
+     margin-left:-13px for the ink edge to land on 32. */
+  --gutter-onboarding-header:32px;
+  /* First content block below the onboarding header. Composed on a step carrying
+     ProgressRule (12 + 2 + 12), full padding on a step without it — the two must match. */
+  --onboarding-title-offset:26px;
+
+  /* Device chrome — included in the 844 reference height, never content */
+  --safe-top:47px;
+  --safe-bottom:34px;
+  --home-indicator-width:134px;
+  --home-indicator-height:5px;
+  --home-indicator-inset:8px;   /* indicator's clearance above the bottom edge */
+  --status-bar-inset:32px;   /* status-bar content inset — device chrome, independent of any content gutter */
+
+  /* Locked component metrics */
+  --header-height:36px;      /* visual row; its 44px targets overflow it by 4px */
+  /* The tray shares the terminal action's geometry exactly — height, side gutter, and
+     seated on the bottom safe area. Only fill, rim, shadow and scroll-under set it apart. */
+  --footer-tray-height:48px;
+  --footer-tray-margin:var(--gutter);
+  /* Zero here carries its unit and must keep it: the trays read this token inside
+     calc(var(--safe-bottom) + var(--footer-tray-gap)), and calc() rejects addition
+     with a unitless zero, which invalidates the whole declaration. A tray that loses
+     its `bottom` falls back to top:0 and renders at the top of the screen. */
+  --footer-tray-gap:0px;
+  --tray-action-height:38px; /* action INSIDE the tray: 5px clear top and bottom */
+  /* Item-detail action footer only: the approval screen seats it on a tighter margin than
+     the canonical tray, and it has to — three actions with ADD TO WISHLIST intact do not
+     fit inside a 20px gutter at 390px. Not transferable to any other tray. */
+  --item-footer-margin:12px;
+  --create-disc-size:42px;
+  --target-min:44px;
+  --control-height:44px;
+  --chip-height:38px;
+  --chip-height-compact:28px; /* ControlChip size="compact": chip annotating a tab row; 44px target kept by overlay */
+  --action-height:48px;
+  --action-height-max:52px;
+  --field-padding-x:12px;
+  --field-underline-height:36px; /* underline field draws no surface, so not --action-height */
+  --field-stack-gap:20px;        /* space between two fields must exceed the space inside one */
+
+  /* Chat thread. A run of messages is bound by two things at once: the squared seam
+     corners on the speaker's side (--radius-bubble, geometry.css) and this tight gap.
+     The grouped gap is deliberately small so a run reads as one block; the turn gap is
+     eight times it, because that contrast is the only thing separating one speaker's run
+     from the next. Never close the turn gap to tidy a thread — it is the grouping. */
+  --bubble-gap-grouped:3px;    /* between consecutive bubbles from the SAME speaker */
+  --bubble-gap-turn:24px;      /* between one speaker's run and the next */
+  /* same speaker inside this window keeps one run */
+  --bubble-group-window:5min; /* @kind other */
+  --bubble-padding-y:12px;     /* 21px line + 24px = a 45px single-line bubble */
+  --bubble-padding-x:16px;
+  /* Of the thread column. A thread carries no avatar rail — fill alone identifies the
+     speaker — so the full column is message width, and 84% still leaves the ground
+     showing on a message's open side, which is what keeps the side reading. */
+  --bubble-max-width:84%;
+}
+
+:root{
+  --radius:4px;               /* the default rectangular radius: plates, fields, sheets, chips */
+  --radius-media:8px;         /* large imagery only: 9:16 look photography, hero and canvas surfaces */
+  --radius-control:3px;       /* TRY ON, FILTERS and other sub-20px controls */
+  /* Chat bubble — the ROUNDED corners only. Smaller than the plate and media radii are
+     large, and deliberately well clear of a pill: at the 14px body step a single-line
+     bubble is 45px tall, so 14px softens the corner without rounding the bubble into a
+     capsule, and it keeps the squared seam corners legible as a straight edge rather
+     than a notch between two arcs. A bubble carries three rounded corners and one or two
+     square ones, always on the speaker's own side: right for the user, left for a friend
+     and for Mira. A lone bubble squares its bottom corner on that side; inside a run the
+     square corners close the seam between neighbours (first squares its bottom, last its
+     top, middle both). The outer side stays fully rounded, so a run reads as one block
+     with a single straight edge facing the speaker. That edge plus --bubble-gap-grouped
+     IS the grouping — see MESSAGING in the readme. */
+  --radius-bubble:14px;
+  --radius-circle:50%;        /* Three only: the 42px Create disc, the profile thumbnail, and GarmentTile's 12px selection dot (the tile's second selection code beside its vermilion edge) — not licence for round marks elsewhere */
+  /* Bottom sheets: top corners only, the bottom edge meets the frame. */
+  --radius-sheet:8px 8px 0 0; /* @kind other */
+  /* An order mark seated flush in a plate's corner. The two edges meeting the plate stay
+     square — the plate's radius and overflow:hidden clip them — so only the inner corner
+     is drawn. Asymmetric by intent: legal only for a badge in a corner, never free-standing. */
+  --radius-corner-badge:0 0 3px 0; /* @kind other */
+  --icon-size-guidance:28px; /* the standalone guidance glyph: above its own caption, no 44px target */
+  --hairline:1px;
+  --selection-edge:2px;
+  /* --border-plate lives in colors.css with the other border colours. */
+
+  /* One restrained diffuse shadow. Frosted footer and frosted Try On only. */
+  --shadow-elevated:0 8px 24px rgba(21,21,21,0.10),0 2px 6px rgba(21,21,21,0.05);
+  --shadow-disc:0 4px 14px rgba(21,21,21,0.18);
+}
+
+:root{
+  --motion-fast:180ms; /* @kind other */
+  --motion-base:260ms; /* @kind other */
+  --motion-slow:380ms; /* @kind other */
+  --motion-press:140ms; /* @kind other */ /* 120–160ms scale response */
+  --motion-cover:8000ms; /* @kind other */ /* the single exception: onboarding motion cover */
+  --ease-standard:cubic-bezier(0.2,0,0.2,1); /* @kind other */
+  --ease-exit:cubic-bezier(0.4,0,1,1); /* @kind other */
+  --press-scale:0.97; /* @kind other */
+}
+@media (prefers-reduced-motion:reduce){
+  :root{--motion-fast:1ms; /* @kind other */ --motion-base:1ms; /* @kind other */ --motion-slow:1ms; /* @kind other */ --motion-press:1ms; /* @kind other */ --press-scale:1; /* @kind other */}
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--surface-screen);color:var(--text-primary);font-family:var(--font-functional);font-size:var(--type-body-size);line-height:var(--type-body-line);-webkit-font-smoothing:antialiased}
+a{color:var(--text-primary);text-decoration:none;border-bottom:var(--hairline) solid var(--border-hairline);transition:opacity var(--motion-fast) var(--ease-standard)}
+a:hover{opacity:0.62;border-bottom-color:var(--border-strong)}
+button{font-family:inherit}
+input::placeholder,textarea::placeholder{color:var(--text-muted);opacity:1}
+img{display:block}
+
+</style>
+<style>doc-page:not(:defined){visibility:hidden}
+:root{--doc-column:100%}
+body{font-family:var(--font-functional);color:var(--text-primary);font-size:11pt;line-height:1.55}
+doc-page{--doc-pad:0}
+.wm{font-size:9pt;letter-spacing:.34em;text-transform:uppercase;color:var(--text-secondary)}
+h1,h2,h3{font-family:var(--font-display);font-weight:var(--weight-regular);text-transform:uppercase;margin:0}
+h1{font-size:40pt;line-height:1.02;letter-spacing:-.01em}
+h2{font-size:19pt;line-height:1.12}
+h3{font-size:12.5pt;line-height:1.2;letter-spacing:.02em;margin:24px 0 8px}
+h4{font-family:var(--font-functional);font-size:9pt;font-weight:var(--weight-medium);letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary);margin:14px 0 5px}
+p{margin:0 0 9px;text-wrap:pretty}
+a{color:var(--vermilion);text-decoration:none}a:hover{opacity:.65}
+strong{font-weight:var(--weight-semibold)}
+.sec{display:flex;align-items:baseline;gap:14px;margin-top:38px;break-after:avoid}
+.sec h2{flex:1;margin:0;padding-top:16px;border-top:2px solid var(--surface-ink)}
+.num{font-size:9pt;letter-spacing:.2em;color:var(--vermilion);padding-top:18px;border-top:2px solid var(--surface-ink);align-self:stretch}
+.lede{font-size:12pt;line-height:1.5;color:var(--text-secondary);margin:10px 0 18px;max-width:46em}
+.rule{font-size:11.5pt;line-height:1.5;border-left:2px solid var(--vermilion);padding-left:14px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 26px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+table{width:100%;border-collapse:collapse;margin:10px 0 14px;font-size:9.5pt;break-inside:avoid}
+th,td{text-align:left;padding:6px 10px 6px 0;border-bottom:1px solid var(--divider);vertical-align:top}
+th{font-size:8pt;letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary);font-weight:var(--weight-medium);border-bottom:1px solid var(--surface-ink)}
+ul,ol{margin:0 0 10px;padding-left:18px}li{margin-bottom:5px}
+.toc{columns:2;column-gap:36px;font-size:10pt;margin:14px 0 0}
+.toc a{display:flex;gap:10px;color:var(--text-primary);padding:5px 0;border-bottom:1px solid var(--divider);break-inside:avoid}
+.toc a i{font-style:normal;color:var(--vermilion);font-size:8.5pt;letter-spacing:.1em;padding-top:2px}
+.cover{height:8.6in;display:flex;flex-direction:column;justify-content:space-between;break-after:page}
+.meta{font-size:9pt;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);line-height:1.9}
+.hair{height:2px;background:var(--surface-ink);margin:0 0 6px}
+.src{font-size:8.5pt;color:var(--text-secondary)}
+/* frames */
+.row{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;margin:10px 0 12px;break-inside:avoid}
+.fig{display:flex;flex-direction:column;flex:none;width:122px}
+.fig.w{width:150px}.fig.s{width:96px}
+.fr{position:relative;width:100%;aspect-ratio:9/16;border-radius:4px;overflow:hidden;background:var(--surface-quiet);border:1px solid var(--divider)}
+.fr.t34{aspect-ratio:3/4}.fr.sq{aspect-ratio:1}
+.fr .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fr .ph.c{object-fit:contain;background:#fff}
+.fr .sz{position:absolute;left:0;right:0;background:repeating-linear-gradient(135deg,rgba(255,79,61,.32) 0 3px,rgba(255,79,61,.08) 3px 7px);border:0 dashed var(--vermilion)}
+.fr .hl{position:absolute;left:9%;right:9%;font-family:var(--font-display);font-weight:500;text-transform:uppercase;line-height:1;color:#fff;font-size:11pt}
+.fr .hl.ink{color:var(--text-primary)}
+.fr .it{font-family:'Cormorant Garamond',serif;font-style:italic;text-transform:none;font-weight:500}
+.fr .eb{position:absolute;left:9%;font-size:5pt;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#fff}
+.fr .eb.ink{color:var(--text-primary)}
+.fr .sub{position:absolute;left:9%;right:12%;background:var(--surface-ink);color:#fff;font-size:5.8pt;line-height:1.3;padding:3px 5px;border-radius:3px}
+.fr .btn{position:absolute;left:12%;right:12%;text-align:center;font-size:5pt;font-weight:600;letter-spacing:.14em;text-transform:uppercase;background:var(--surface-ink);color:#fff;padding:5px 0;border-radius:4px}
+.fr .btn.w{background:#fff;color:var(--text-primary)}
+.fr .mira{position:absolute;left:8%;right:12%;background:var(--vermilion);color:#fff;font-size:5.6pt;line-height:1.3;padding:4px 6px;border-radius:6px 6px 6px 0}
+.fr .seg2{position:absolute;top:3%;left:5%;right:5%;display:flex;gap:2px}
+.fr .seg2 i{flex:1;height:1.5px;background:rgba(255,255,255,.45)}.fr .seg2 i.on{background:#fff}
+.fr .stk{position:absolute;left:14%;right:14%;background:#fff;border-radius:6px;padding:5px;display:flex;flex-direction:column;gap:3px;font-size:5pt;color:var(--text-primary);text-align:center}
+.fr .stk b{font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.fr .stk span{display:flex;gap:3px}.fr .stk span i{flex:1;font-style:normal;border:1px solid var(--divider);border-radius:4px;padding:3px 0;letter-spacing:.08em;text-transform:uppercase}
+.fr .sym{position:absolute}
+.fr .pr{position:absolute;left:9%;font-size:5.8pt;color:var(--text-primary)}
+.fr .ui{position:absolute;right:4%;bottom:24%;display:flex;flex-direction:column;gap:6px}.fr .ui i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.85)}
+.cap{display:block;font-size:7.5pt;line-height:1.35;letter-spacing:.1em;text-transform:uppercase;margin-top:6px}
+.cap2{display:block;font-size:7.5pt;line-height:1.35;color:var(--text-secondary);margin-top:2px}
+/* do / don't */
+.dd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:10px 0 14px;break-inside:avoid}
+.dd>div{display:flex;flex-direction:column;gap:6px}
+.dd .lab{font-size:7.5pt;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding-top:5px;border-top:2px solid var(--surface-ink)}
+.dd .no .lab{border-top-color:var(--vermilion)}
+.dd p{font-size:8.5pt;line-height:1.4;margin:0;color:var(--text-secondary)}
+.dd .fr{aspect-ratio:3/4}
+.dl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 26px;margin:8px 0 14px;font-size:9.5pt;break-inside:avoid}
+.dl>div{padding:6px 0;border-bottom:1px solid var(--divider)}
+.dl .hd{font-size:8pt;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-bottom:2px solid var(--surface-ink)}
+.dl .hd.no{border-bottom-color:var(--vermilion)}
+/* captions */
+.case{border:1px solid var(--divider);border-radius:4px;padding:14px 16px;margin:0 0 12px;break-inside:avoid;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px}
+.case .tg{font-size:7.5pt;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--text-secondary);margin:0 0 8px;grid-column:1/-1}
+.case .tg b{color:var(--vermilion);font-weight:600}
+.cx{font-size:9.5pt;line-height:1.5;background:var(--surface-quiet);border-radius:4px;padding:10px 12px}
+.cx p{margin:0 0 5px}
+.cx .h{font-weight:var(--weight-semibold)}
+.why{font-size:9pt;line-height:1.45;margin:0;padding-left:16px}
+.why li{margin-bottom:4px}
+/* type */
+.tspec{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:start;margin:10px 0 14px;break-inside:avoid}
+.tt td:first-child{white-space:nowrap}
+.sw{display:flex;gap:6px;margin:8px 0}.sw div{flex:1;height:54px;border-radius:4px;border:1px solid var(--divider);display:flex;align-items:flex-end;padding:6px;font-size:7pt;letter-spacing:.1em;text-transform:uppercase}
+.check{columns:2;column-gap:26px;font-size:9.5pt;list-style:none;padding:0}
+.check li{break-inside:avoid;padding:5px 0 5px 20px;border-bottom:1px solid var(--divider);position:relative}
+.check li:before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border:1px solid var(--surface-ink);border-radius:2px}
+@media print{.cover{height:9.1in}}
+</style>
+<style>.dd .fr{aspect-ratio:9/16!important}.fr{background:#F3F3F1}.fr .ph.c{background:transparent;top:13%;height:86%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent),linear-gradient(transparent,#000 8%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent),linear-gradient(transparent,#000 8%);mask-composite:intersect}.fr .fit{-webkit-mask-image:linear-gradient(transparent,#000 6%);mask-image:linear-gradient(transparent,#000 6%);position:absolute;left:8%;width:84%;top:30%;height:66%;object-fit:contain;object-position:50% 100%}.fr .fit.full{top:5%;height:91%}.fr .ph.low{top:15%;height:85%}.fr .pc{position:absolute;inset:14% 10% 22%;overflow:hidden;background:#fff}.fr .pc img{position:absolute;left:0;top:0;width:118%;height:128%;object-fit:contain;object-position:0 0}.fr:has(.pc){background:#fff}.eb.pl{background:var(--surface-ink);color:#fff;padding:2px 4px;border-radius:2px}</style>
+<script src="assets/social-media-guidelines/eb9c68bc-9f9f-4f7f-a98c-c521ffec9008.js"></script>
+<script defer="" src="grimmor-resource-navigation.js"></script></head>
+<body>
+<doc-page>
+<div class="wm" slot="header">Grimmor — Social media design guidelines</div>
+<div class="wm" slot="footer">For content creators · Edition 01 · 2026</div>
+<section class="cover">
+<div style="padding-top:34px"><div class="hair"></div><p class="meta">Grimmor · For content creators</p></div>
+<div>
+<gm-wordmark size="44"></gm-wordmark>
+<h1 style="margin-top:34px">Social media<br/>design guidelines.</h1>
+<p class="lede" style="font-size:13pt;max-width:30em;margin-top:18px">How Grimmor looks, moves and speaks on Instagram and TikTok — and what works on each platform right now. Read it before your first shoot. Keep it open while you edit.</p>
+</div>
+<div class="meta">Edition 01 · October 2026<br/>Instagram · TikTok<br/>Questions: your Grimmor contact</div>
+</section>
+<h2 style="border:0;padding:0">Contents</h2>
+<nav class="toc">
+<a href="#c1"><i>01</i>Before you start</a>
+<a href="#c2"><i>02</i>Grimmor in one page</a>
+<a href="#c3"><i>03</i>What works on each platform</a>
+<a href="#c4"><i>04</i>The ten rules</a>
+<a href="#c5"><i>05</i>Photography &amp; filming</a>
+<a href="#c6"><i>06</i>Colour</a>
+<a href="#c7"><i>07</i>Typography</a>
+<a href="#c8"><i>08</i>Logo &amp; tagging</a>
+<a href="#c9"><i>09</i>Formats &amp; safe zones</a>
+<a href="#c10"><i>10</i>Reels &amp; TikToks</a>
+<a href="#c11"><i>11</i>Carousels</a>
+<a href="#c12"><i>12</i>Stories</a>
+<a href="#c13"><i>13</i>Captions</a>
+<a href="#c14"><i>14</i>CTAs &amp; hashtags</a>
+<a href="#c15"><i>15</i>Tone of voice</a>
+<a href="#c16"><i>16</i>Showing the app &amp; Mira</a>
+<a href="#c17"><i>17</i>Disclosure, rights &amp; safety</a>
+<a href="#c18"><i>18</i>Delivery &amp; approval</a>
+<a href="#c19"><i>19</i>Before you publish</a>
+</nav>
+<div class="sec" id="c1"><span class="num">01</span><h2>Before you start</h2></div>
+<p class="lede">This document is for everyone who makes content for or with Grimmor: photographers, videographers, editors, creators and agencies.</p>
+<div class="grid2">
+<div><h4>What is fixed</h4><p>Colour, type, logo, photography grade, disclosure and the approval process. These are the same for every creator, every post.</p></div>
+<div><h4>What is yours</h4><p>Your face, your voice, your styling ideas, your locations. We hire you for your eye. These guidelines keep your work recognisably Grimmor, not identical to everyone else's.</p></div>
+</div>
+<div class="rule">If a rule here conflicts with your brief, <strong>the brief wins</strong>. If something isn't covered, ask your Grimmor contact before you publish — not after.</div>
+<div class="sec" id="c2"><span class="num">02</span><h2>Grimmor in one page</h2></div>
+<p class="lede">Grimmor is a fashion social-commerce app — "the global closet". A feed of full-look photography, a model-free virtual Fitting Room, brand shopping, and an AI stylist called Mira, in one editorial interface.</p>
+<div class="grid3">
+<div><h4>Precise</h4><p>Exact tailoring, clean lines, one idea per frame. Nothing accidental in the picture.</p></div>
+<div><h4>Confident</h4><p>We don't explain, beg or shout. The clothes and the attitude carry the message.</p></div>
+<div><h4>Quiet</h4><p>White space, cool light, few words. Restraint is what makes Grimmor stand out in a loud feed.</p></div>
+</div>
+<table><thead><tr><th>Line</th><th>Use</th></tr></thead><tbody>
+<tr><td><strong>THE GLOBAL CLOSET</strong></td><td>Brand line. End cards, profile bio, brand films.</td></tr>
+<tr><td><strong>BUY LESS. WEAR MORE.</strong></td><td>Campaign line. Campaign content only, signed by the symbol.</td></tr>
+</tbody></table>
+<div class="sec" id="c3"><span class="num">03</span><h2>What works on each platform</h2></div>
+<p class="lede">What Instagram and TikTok reward in 2026, and how we apply it. Platforms change often — your Grimmor contact sends updates when they do.</p>
+<table>
+<thead><tr><th style="width:22%">Topic</th><th>Instagram</th><th>TikTok</th><th>What we do</th></tr></thead>
+<tbody>
+<tr><td><strong>Role</strong></td><td>Reels reach new people; carousels get the most engagement and saves; Stories keep followers close.</td><td>The For You feed rewards completion; search rewards clear keywords.</td><td>Reels and TikToks for discovery, carousels for products and styling, Stories daily.</td></tr>
+<tr><td><strong>First 3 seconds</strong></td><td>The hook decides the Reel.</td><td>If viewers swipe in the first seconds, the video stops being shown.</td><td>Open on the strongest image of the look. Never a greeting, logo or intro.</td></tr>
+<tr><td><strong>Length</strong></td><td>Under 90 seconds for reach to non-followers; Reels up to 3 minutes can be recommended.</td><td>About 21–34 s for completion; 60 s+ for search and how-tos.</td><td>Brand Reels 7–30 s. Styling how-tos 30–60 s. Never pad.</td></tr>
+<tr><td><strong>Sound off</strong></td><td colspan="2">A large share of people watch muted. On-screen text and subtitles keep the message.</td><td>Subtitles on every video with speech. Max 5 words of on-screen text per frame.</td></tr>
+<tr><td><strong>Search</strong></td><td>Keywords in captions, alt text and on-screen text help discovery.</td><td>Keyword in the first 3–5 words of the caption and on screen in the first 3 s.</td><td>Name the garment in plain words early: "ivory suit", "long wool coat".</td></tr>
+<tr><td><strong>Caption</strong></td><td>Only the first line shows before "more".</td><td>150–225 characters fit without truncation.</td><td>Line one does the work. See chapter 13.</td></tr>
+<tr><td><strong>Hashtags</strong></td><td colspan="2">3–5 specific tags beat long lists.</td><td>#Grimmor plus 2–4 specific tags.</td></tr>
+<tr><td><strong>Originality</strong></td><td>Reposts and videos with other apps' watermarks lose reach. AI-generated people must carry Instagram's AI label.</td><td>Original footage performs best.</td><td>Export a clean file for each platform. Never post a TikTok-watermarked file on Instagram.</td></tr>
+<tr><td><strong>Grid</strong></td><td>The profile grid crops every post to 3:4. 3:4 (1080 × 1440) posts are not cropped.</td><td>—</td><td>Shoot and post feed images at 3:4.</td></tr>
+</tbody>
+</table>
+<p class="src">Sources (October 2026): Buffer — Instagram algorithm guide; Metricool — TikTok SEO guide 2026; creatorflow.so — Instagram algorithm changes 2026; zeely.ai and breakreach.com — Instagram safe zones; instantdm.com — Instagram size guide (September 2026); metadatareactor.com — TikTok caption length; posteverywhere.ai — Meta Reels ad safe zone.</p>
+<div class="sec" id="c4"><span class="num">04</span><h2>The ten rules</h2></div>
+<ol style="font-size:10.5pt">
+<li><strong>The look comes first.</strong> Head-to-toe, vertical, in focus. The clothes are the hero.</li>
+<li><strong>Cool, clean light.</strong> No warm filters, no grain, no vignette, no beauty filters.</li>
+<li><strong>White, ink, vermilion.</strong> Vermilion marks one thing per frame.</li>
+<li><strong>Jost and DM Sans only.</strong> Never the platform's built-in fonts.</li>
+<li><strong>No text on a wash.</strong> No dark gradient behind type.</li>
+<li><strong>One headline, one figure, one CTA</strong> per frame.</li>
+<li><strong>No emoji, no stickers, no exclamation marks</strong> in Grimmor content.</li>
+<li><strong>Subtitles on every video</strong> with speech.</li>
+<li><strong>Keep everything important inside the safe zone.</strong></li>
+<li><strong>Always disclose</strong> paid partnerships with the platform's label.</li>
+</ol>
+<div class="sec" id="c5"><span class="num">05</span><h2>Photography &amp; filming</h2></div>
+<p class="lede">Our photography is cool, precise and architectural: a calm studio or bare concrete, one person, one complete look. It should feel like an editorial page, not a selfie.</p>
+<div class="grid2">
+<div><h4>Subject</h4><p>One person, one complete look. The full silhouette from head to shoe is visible in the opening shot. Still, confident poses — hands in pockets, a slow step, a turn. No pulling faces, no pointing at the camera, no dancing trends.</p>
+<h4>Framing</h4><p>Vertical, always. Shoot 9:16 for video and 3:4 for stills. Camera level, at chest height or slightly below. Leave clean space above the head for a headline.</p></div>
+<div><h4>Ground &amp; light</h4><p>A seamless pale-grey studio, or daylight on concrete and stone. Soft, cool, even light. Nothing behind the look: no streets, cars, crowds, interiors or patterns.</p>
+<h4>One vermilion note</h4><p>Grimmor styling often carries one vermilion accent in the clothes — a belt, a scarf, a collar lining, a drape. One, never two. When it is in the clothes, keep vermilion out of the graphics on that frame.</p></div>
+</div>
+<div class="dd">
+<div><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/aacd10eb-77a2-4904-be58-e16057723d08.jpg"/></div><span class="lab">Do</span><p>Full silhouette, head to toe, on a calm ground.</p></div>
+<div class="no"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/aacd10eb-77a2-4904-be58-e16057723d08.jpg" style="transform:scale(1.9);transform-origin:50% 52%"/></div><span class="lab">Don't</span><p>Crop the head or feet off the look.</p></div>
+<div class="no"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/c7dc3108-462b-45b5-8b54-671b76ef47b9.jpg" style="filter:sepia(.65) saturate(1.7) contrast(1.05)"/></div><span class="lab">Don't</span><p>Warm, vintage or golden-hour filters.</p></div>
+<div class="no"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/0ba7b628-c4e1-48b6-b511-04b7c816a369.jpg"/><i style="position:absolute;inset:0;box-shadow:inset 0 0 40px 24px rgba(0,0,0,.85)"></i></div><span class="lab">Don't</span><p>Vignettes, grain or blur effects.</p></div>
+</div>
+<div class="dd">
+<div><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/a4eb8491-7f3f-4bcd-af42-0e5c87ed09e7.jpg"/></div><span class="lab">Do</span><p>Studio or concrete. Nothing competes with the look.</p></div>
+<div class="no"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/a1cb6788-5337-4399-aac7-f3b7cf70a0ef.jpg"/></div><span class="lab">Don't</span><p>Let the figure invade the picture's margins. Keep the margins for the background.</p></div>
+<div><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/cb8f2c39-5f27-4df6-9946-5cca4ded3215.jpg"/></div><span class="lab">Do</span><p>One vermilion accent, carried by the clothes.</p></div>
+<div class="no"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/070b7fab-d7c1-40ad-a60c-c616194366a5.jpg" style="transform:rotate(-12deg) scale(1.3)"/></div><span class="lab">Don't</span><p>Tilted, fisheye or extreme low angles.</p></div>
+</div>
+<div class="sec" id="c6"><span class="num">06</span><h2>Colour</h2></div>
+<div class="sw">
+<div style="background:#fff">White<br/>#FFFFFF</div>
+<div style="background:var(--surface-quiet)">Quiet<br/>#F6F6F4</div>
+<div style="background:var(--surface-ink);color:#fff">Ink<br/>#151515</div>
+<div style="background:var(--vermilion);color:#fff">Vermilion<br/>#FF4F3D</div>
+</div>
+<p><strong>White and ink</strong> are the grounds for text frames, end cards and plates. <strong>Vermilion is the decision colour</strong>: the symbol, one word, Mira's bubble, or one tile in nine on the grid. Never two vermilion elements in one frame, never vermilion type for long text, never gradients or a second accent colour.</p>
+<p>The clothes bring the colour. If a garment is red or orange, leave vermilion out of that frame entirely.</p>
+<div class="sec" id="c7"><span class="num">07</span><h2>Typography</h2></div>
+<p class="lede">Two typefaces do all the work: <strong>Jost</strong> speaks for the brand, <strong>DM Sans</strong> gives information. <strong>Cormorant Garamond Italic</strong> is a rare editorial accent. All three are free on Google Fonts.</p>
+<div class="tspec">
+<div class="fig w"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/b5437d4d-1973-432e-a0b5-09ca74bca219.jpg"/><span class="eb" style="top:15%">New in · 01</span><span class="hl" style="top:19%;font-size:15pt">The long<br/><span class="it">coat</span></span><span class="sub" style="bottom:38%">Double-faced wool, cut to the ankle.</span></div><span class="cap">How it fits together</span><span class="cap2">Eyebrow · headline · accent · subtitle</span></div>
+<table class="tt" style="margin:0">
+<thead><tr><th>Role</th><th>Font</th><th>Size on 1080 px</th><th>Rules</th></tr></thead>
+<tbody>
+<tr><td><strong>Headline</strong></td><td>Jost Medium</td><td>96–120 px · line 1.0 · tracking −1%</td><td>UPPERCASE. <strong>5 words max</strong>, 2–3 lines. Left-aligned at the 96 px margin.</td></tr>
+<tr><td><strong>Eyebrow</strong></td><td>DM Sans SemiBold</td><td>28 px · tracking +18%</td><td>UPPERCASE. Above a headline: "NEW IN · 01", "THE EDIT".</td></tr>
+<tr><td><strong>Accent</strong></td><td>Cormorant Garamond Italic</td><td>Same size as the headline</td><td>Lowercase. One word or phrase, once per campaign.</td></tr>
+<tr><td><strong>Subtitle</strong></td><td>DM Sans Medium</td><td>44 px · line 1.3</td><td>Sentence case. White on an ink plate. 2 lines, ~32 characters per line. See chapter 10.</td></tr>
+<tr><td><strong>Credit &amp; price</strong></td><td>DM Sans Medium</td><td>32–36 px</td><td>"Coat · Brand · €640.00". Two decimals.</td></tr>
+<tr><td><strong>CTA</strong></td><td>DM Sans SemiBold</td><td>30 px · tracking +14%</td><td>UPPERCASE in an ink or white plate. App verbs only.</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>No more than 5 words on screen</strong> in any frame. <strong>Alignment:</strong> left by default. Centre only on end cards and typographic covers. <strong>Maximum two families per frame</strong> (Jost + DM Sans, or Jost + Cormorant). No outlines, shadows, glows, gradients, 3D or animated letter effects. Text animates in with a simple fade or cut, never bounces or types on.</p>
+<div class="dd">
+<div><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/070b7fab-d7c1-40ad-a60c-c616194366a5.jpg"/><span class="hl ink" style="top:3%;font-size:9pt">The quiet<br/>uniform.</span></div><span class="lab">Do</span><p>Jost, uppercase, on clean space above the figure.</p></div>
+<div class="no"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/070b7fab-d7c1-40ad-a60c-c616194366a5.jpg"/><span class="hl" style="top:3%;font-family:Brush Script MT,Comic Sans MS,cursive;text-transform:none;font-size:12pt;color:#FFE14D;-webkit-text-stroke:.6px #000">The quiet uniform!!</span></div><span class="lab">Don't</span><p>Platform fonts, script fonts, colour, outlines.</p></div>
+<div class="no"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/12df2883-7138-49b3-9567-b94b2044d4da.jpg"/><i style="position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(0,0,0,.9))"></i><span class="hl" style="bottom:9%;font-size:10pt">The quiet<br/>uniform.</span></div><span class="lab">Don't</span><p>A dark gradient behind type.</p></div>
+<div class="no"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/cb8f2c39-5f27-4df6-9946-5cca4ded3215.jpg"/><span class="hl ink" style="top:56%;left:4%;right:52%;font-size:5.2pt;text-transform:none;font-family:var(--font-functional);font-weight:400;line-height:1.3">This season we are so excited to bring you our brand new collection of beautiful pieces you will love every day</span></div><span class="lab">Don't</span><p>Paragraphs on screen. Five words, then cut.</p></div>
+</div>
+<div class="sec" id="c8"><span class="num">08</span><h2>Logo &amp; tagging</h2></div>
+<p class="lede">The Grimmor symbol is the Twist. It signs Grimmor's own campaign content. On your own channels you don't use our logo — you <strong>tag @grimmor</strong>.</p>
+<table><thead><tr><th>Content</th><th>Logo</th><th>Tag</th></tr></thead><tbody>
+<tr><td>Grimmor-commissioned campaign film or post</td><td>The wordmark centred on the closing frame over a calm ground, or the Twist bottom-left on an end card — from the files we supply</td><td>@grimmor in caption</td></tr>
+<tr><td>Your own post featuring Grimmor</td><td>None</td><td>@grimmor in caption, product tags on items</td></tr>
+<tr><td>Screen recording of the app</td><td>None added — the app shows the brand</td><td>@grimmor in caption</td></tr>
+</tbody></table>
+<p>Use only the supplied files: white, ink or vermilion. Clear space around the logo is a quarter of its height. Symbol minimum 64 px, wordmark minimum 400 px wide on a 1080 px frame.</p>
+<div class="dd">
+<div><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/df1e456d-e0ad-4f2a-83c2-409d11dc074d.jpg"/></div><span class="lab">Do</span><p>Wordmark centred on the closing frame. Calm concrete, nothing busy behind it.</p></div>
+<div><div class="fr"><div style="position:absolute;inset:0;background:#fff;display:grid;place-items:center"><img alt="" src="assets/social-media-guidelines/1d197768-58aa-4128-aa53-72754fde311d.svg" style="width:40%"/></div></div><span class="lab">Do</span><p>Supplied Twist file, one colour, clear space.</p></div>
+<div class="no"><div class="fr"><div style="position:absolute;inset:0;background:#fff;display:grid;place-items:center"><img alt="" src="assets/social-media-guidelines/1d197768-58aa-4128-aa53-72754fde311d.svg" style="width:40%;transform:scaleX(1.6) rotate(-18deg);filter:hue-rotate(160deg) drop-shadow(3px 4px 3px rgba(0,0,0,.5))"/></div></div><span class="lab">Don't</span><p>Stretch, rotate, recolour or add effects.</p></div>
+<div class="no"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/a1cb6788-5337-4399-aac7-f3b7cf70a0ef.jpg"/><img alt="" src="assets/social-media-guidelines/b96553ea-6ae6-46bf-a8a5-9f9dd397fc45.svg" style="position:absolute;left:36%;top:42%;width:28%"/></div><span class="lab">Don't</span><p>Place it over a busy photo or a creator's image.</p></div>
+</div>
+<div class="sec" id="c9"><span class="num">09</span><h2>Formats &amp; safe zones</h2></div>
+<p class="lede">Hatched areas are covered by the platform's buttons, captions and username. Keep text, the logo and CTAs out of them.</p>
+<div class="row">
+<div class="fig"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/aacd10eb-77a2-4904-be58-e16057723d08.jpg"/><i class="sz" style="top:0;height:14%;border-bottom-width:1px"></i><i class="sz" style="bottom:0;height:35%;border-top-width:1px"></i><i class="sz" style="top:14%;bottom:60%;left:auto;width:11%;border-left-width:1px"></i><i class="sz" style="top:40%;bottom:35%;left:auto;width:21%;border-left-width:1px"></i><i class="sz" style="top:14%;bottom:35%;right:auto;width:6%;border-right-width:1px"></i></div><span class="cap">Reel / TikTok</span><span class="cap2">1080 × 1920 · 270 top · 670 bottom · right rail 120 px, 230 px lower half</span></div>
+<div class="fig"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/cb8f2c39-5f27-4df6-9946-5cca4ded3215.jpg"/><i class="sz" style="top:0;height:14%;border-bottom-width:1px"></i><i class="sz" style="bottom:0;height:35%;border-top-width:1px"></i></div><span class="cap">Story</span><span class="cap2">1080 × 1920 · 270 top · 670 bottom</span></div>
+<div class="fig w"><div class="fr t34" style="background:linear-gradient(rgb(247,247,247) 0%,rgb(247,247,247) 14.8%,rgb(247,247,247) 18.4%,rgb(247,247,247) 22.0%,rgb(247,247,247) 25.5%,rgb(247,247,248) 29.1%,rgb(248,248,248) 32.7%,rgb(247,247,247) 36.3%,rgb(248,248,248) 39.9%,rgb(248,248,248) 43.5%,rgb(248,248,248) 47.0%,rgb(246,246,247) 50.6%,rgb(246,246,247) 54.2%,rgb(247,247,247) 57.8%,rgb(247,247,247) 61.4%,rgb(247,247,247) 65.0%,rgb(246,246,248) 68.5%,rgb(246,246,247) 72.1%,rgb(246,246,248) 75.7%,rgb(244,243,246) 79.3%,rgb(229,229,231) 82.9%,rgb(227,227,229) 86.5%,rgb(234,234,235) 90.0%,rgb(239,239,240) 93.6%,rgb(242,242,243) 97.2%)"><img alt="" class="ph c" src="assets/social-media-guidelines/c7dc3108-462b-45b5-8b54-671b76ef47b9.jpg"/></div><span class="cap">Feed &amp; carousel</span><span class="cap2">1080 × 1440 (3:4) — no grid crop</span></div>
+<div class="fig"><div class="fr"><img alt="" class="ph low" src="assets/social-media-guidelines/0ba7b628-c4e1-48b6-b511-04b7c816a369.jpg"/><i class="sz" style="top:0;height:12.5%;border-bottom-width:1px"></i><i class="sz" style="bottom:0;height:12.5%;border-top-width:1px"></i><span class="hl ink" style="top:14%;font-size:8pt;right:55%">Buy less.<br/>Wear more.</span></div><span class="cap">Reel cover</span><span class="cap2">Grid shows the middle 1080 × 1440</span></div>
+</div>
+<table><thead><tr><th>Format</th><th>Size</th><th>Notes</th></tr></thead><tbody>
+<tr><td>Reel / TikTok</td><td>1080 × 1920, 9:16</td><td>The app covers about the top 14% and bottom 35%. Keep text in the middle.</td></tr>
+<tr><td>Story</td><td>1080 × 1920, 9:16</td><td>Same safe zone as Reels: 270 px top, 670 px bottom. One sticker per frame.</td></tr>
+<tr><td>Feed post</td><td>1080 × 1440, 3:4</td><td>Shows uncropped in feed and grid. Use 1080 × 1350 (4:5) only for paid ads.</td></tr>
+<tr><td>Carousel</td><td>1080 × 1440 per slide</td><td>Slide 1 sets the ratio for all. Up to 20 slides allowed; we use 3–10.</td></tr>
+<tr><td>Reel cover</td><td>1080 × 1920</td><td>Headline and figure inside the centre 1080 × 1440.</td></tr>
+</tbody></table>
+<div class="sec" id="c10"><span class="num">10</span><h2>Reels &amp; TikToks</h2></div>
+<p class="lede">Structure: <strong>Hook → Detail → Close</strong>. One idea per video. Hard cuts on the beat, every 2–4 seconds. Slow push-ins; no whip pans, glitches, zoom bursts or shakes.</p>
+<div class="rule"><strong>Text never touches the figure.</strong> Headlines, eyebrows and CTAs sit in the clear band above the head, inside the safe zone. The whole figure stays in frame with margin around it — head and feet never cut, never touching the edge.</div>
+<h3>Subtitles — the rules</h3>
+<table><thead><tr><th>Rule</th><th>Spec</th></tr></thead><tbody>
+<tr><td><strong>Position</strong></td><td>One fixed position for the whole video — never moving between shots. <strong>Full-look shots:</strong> the clear band above the head. <strong>Talking or voiceover shots:</strong> a band at 60–65% of frame height, over the torso, below the chin. Never on the face.</td></tr>
+<tr><td><strong>Lines</strong></td><td>2 lines max. About 32 characters per line.</td></tr>
+<tr><td><strong>Line breaks</strong></td><td>Break at punctuation or between phrases — never inside one. "Swap to ivory / after dark", not "Swap to / ivory after dark".</td></tr>
+<tr><td><strong>Timing</strong></td><td>Max 17 characters per second. Each subtitle on screen 1–7 seconds.</td></tr>
+<tr><td><strong>Type</strong></td><td>DM Sans Medium, 44 px, white on a solid ink plate. Survives platform compression.</td></tr>
+</tbody></table>
+<div class="row">
+<div class="fig"><div class="fr" style="background:linear-gradient(rgb(252,255,254) 0%,rgb(252,255,254) 31.4%,rgb(252,254,254) 34.1%,rgb(252,255,254) 36.9%,rgb(253,255,254) 39.6%,rgb(253,255,254) 42.4%,rgb(254,254,254) 45.1%,rgb(254,254,254) 47.9%,rgb(254,254,254) 50.6%,rgb(252,254,254) 53.4%,rgb(252,254,253) 56.1%,rgb(252,254,253) 58.9%,rgb(252,254,253) 61.6%,rgb(252,254,253) 64.4%,rgb(252,254,253) 67.1%,rgb(252,254,253) 69.9%,rgb(252,254,253) 72.6%,rgb(252,254,253) 75.4%,rgb(252,254,253) 78.1%,rgb(252,254,253) 80.9%,rgb(251,253,253) 83.6%,rgb(249,251,251) 86.4%,rgb(249,251,250) 89.1%,rgb(250,252,251) 91.9%,rgb(251,253,252) 94.6%,rgb(251,253,252) 100%)"><img alt="" class="fit" src="assets/social-media-guidelines/12df2883-7138-49b3-9567-b94b2044d4da.jpg" style="-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),linear-gradient(transparent,#000 8%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),linear-gradient(transparent,#000 8%);mask-composite:intersect"/><span class="sub" style="top:16%;bottom:auto">Charcoal pleats for the office.</span></div><span class="cap">Full-look shot</span><span class="cap2">Subtitle in the band above the head.</span></div>
+<div class="fig"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/12df2883-7138-49b3-9567-b94b2044d4da.jpg" style="transform:scale(1.9);transform-origin:50% 12%"/><span class="sub" style="top:62%;bottom:auto">I wear this coat five days a week.</span></div><span class="cap">Talking shot</span><span class="cap2">Fixed band at 60–65%, below the chin.</span></div>
+</div>
+<h3>Example A — Campaign film · 15 s · Instagram + TikTok</h3>
+<div class="row">
+<div class="fig"><div class="fr" style="background:rgb(246,246,246)"><img alt="" class="ph" src="assets/social-media-guidelines/c7dc3108-462b-45b5-8b54-671b76ef47b9.jpg"/></div><span class="cap">0–1 s · Hook</span><span class="cap2">Full look, standing still. No text.</span></div>
+<div class="fig"><div class="fr" style="background:#fff"><img alt="" class="ph" src="assets/social-media-guidelines/c7dc3108-462b-45b5-8b54-671b76ef47b9.jpg" style="transform:scale(2.6);transform-origin:50% 41%"/></div><span class="cap">1–6 s · Detail</span><span class="cap2">Push in on one garment detail: the belt.</span></div>
+<div class="fig"><div class="fr" style="background:rgb(246,246,246)"><img alt="" class="ph" src="assets/social-media-guidelines/c7dc3108-462b-45b5-8b54-671b76ef47b9.jpg" style="top:auto;bottom:0;height:78%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),linear-gradient(transparent,#000 8%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),linear-gradient(transparent,#000 8%);mask-composite:intersect"/><span class="hl ink" style="top:14%;font-size:9pt">Buy less.<br/>Wear more.</span></div><span class="cap">6–12 s · Line</span><span class="cap2">Line above the head, figure in full.</span></div>
+<div class="fig"><div class="fr" style="background:#ccc"><img alt="" class="ph" src="assets/social-media-guidelines/df1e456d-e0ad-4f2a-83c2-409d11dc074d.jpg"/><span class="btn w" style="top:14%;bottom:auto">Shop the look</span></div><span class="cap">12–15 s · Close</span><span class="cap2">Wordmark frame, CTA on the wall above.</span></div>
+</div>
+<h3>Example B — Styling how-to · 30 s · creator voiceover</h3>
+<div class="row">
+<div class="fig"><div class="fr" style="background:rgb(252,254,253)"><img alt="" class="fit" src="assets/social-media-guidelines/12df2883-7138-49b3-9567-b94b2044d4da.jpg"/><span class="hl ink" style="top:14%;font-size:9pt">One coat,<br/>two ways.</span></div><span class="cap">0–3 s · Hook</span><span class="cap2">Result first, keyword on screen.</span></div>
+<div class="fig"><div class="fr" style="background:rgb(252,254,253)"><img alt="" class="fit" src="assets/social-media-guidelines/12df2883-7138-49b3-9567-b94b2044d4da.jpg"/><span class="eb ink" style="top:14%">01 · Day</span><span class="sub" style="top:18.5%;bottom:auto">Charcoal pleats for the office.</span></div><span class="cap">3–14 s · Step 1</span><span class="cap2">Eyebrow + subtitle above the head.</span></div>
+<div class="fig"><div class="fr" style="background:rgb(248,250,249)"><img alt="" class="fit" src="assets/social-media-guidelines/aacd10eb-77a2-4904-be58-e16057723d08.jpg" style="top:22%;height:88%"/><span class="eb ink" style="top:14%">02 · Evening</span><span class="sub" style="top:18.5%;bottom:auto">Swap to ivory after dark.</span></div><span class="cap">14–26 s · Step 2</span><span class="cap2">One change per step.</span></div>
+<div class="fig"><div class="fr" style="background:rgb(248,250,249)"><img alt="" class="fit" src="assets/social-media-guidelines/aacd10eb-77a2-4904-be58-e16057723d08.jpg" style="top:22%;height:88%"/><span class="btn" style="top:16%;bottom:auto">Try it on</span></div><span class="cap">26–30 s · Close</span><span class="cap2">Final look + CTA.</span></div>
+</div>
+<h3>Example C — Fitting Room try-on · 20 s · TikTok first</h3>
+<div class="row">
+<div class="fig"><div class="fr" style="background:#fff"><img alt="" class="fit" src="assets/social-media-guidelines/a5821045-f454-428a-9ede-53de55aa8099.png"/><span class="hl ink" style="top:14%;font-size:9pt">Try on before<br/>you buy.</span></div><span class="cap">0–2 s · Hook</span><span class="cap2">The finished outfit on the canvas.</span></div>
+<div class="fig"><div class="fr" style="background:#fff"><span class="pc" style="inset:31% 12% 5%"><img alt="" src="assets/social-media-guidelines/83327927-2f4f-4d12-b884-f230cf08c05b.png"/></span><span class="sub" style="top:18.5%;bottom:auto">Pick a top from your closet.</span></div><span class="cap">2–10 s · Screen</span><span class="cap2">Real screen recording.</span></div>
+<div class="fig"><div class="fr" style="background:#fff"><span class="pc" style="inset:31% 12% 5%"><img alt="" src="assets/social-media-guidelines/7a28dbdc-44c5-4036-abd4-ca96378f2169.png"/></span><span class="sub" style="top:18.5%;bottom:auto">Add trousers. Mira checks the fit.</span></div><span class="cap">10–16 s · Screen</span><span class="cap2">Subtitles describe each tap.</span></div>
+<div class="fig"><div class="fr" style="background:#fff"><img alt="" class="fit" src="assets/social-media-guidelines/a5821045-f454-428a-9ede-53de55aa8099.png"/><span class="btn" style="top:16%;bottom:auto">Download Grimmor</span></div><span class="cap">16–20 s · Close</span><span class="cap2">Loops back to the hook.</span></div>
+</div>
+<div class="grid2">
+<div><h4>Do</h4><ul><li>Open on the most striking frame of the look.</li><li>Keep the whole figure in frame, with margin above the head and below the feet.</li><li>Headlines and CTAs above the head. Subtitles in one fixed position for the whole video — see the rules below.</li><li>Use original or licensed music chosen for mood.</li><li>Put the garment keyword on screen in the first 3 seconds of how-tos.</li></ul></div>
+<div><h4>Don't</h4><ul><li>Cover the face or body with captions, plates or buttons.</li><li>Crop heads or feet, or let the figure touch the frame edge.</li><li>Start with "Hi guys", a logo, or a countdown.</li><li>Use transitions: spins, whips, glitches, flashes.</li><li>Post a TikTok-watermarked file on Instagram.</li></ul></div>
+</div>
+<div class="sec" id="c11"><span class="num">11</span><h2>Carousels</h2></div>
+<p class="lede">Carousels get the most saves and engagement on Instagram. Slide 1 is the cover, the middle slides add one thing each, the last slide asks for one action.</p>
+<h3>Example A — Product drop · 5 slides</h3>
+<div class="row">
+<div class="fig s"><div class="fr t34"><img alt="" class="ph low" src="assets/social-media-guidelines/c7dc3108-462b-45b5-8b54-671b76ef47b9.jpg"/><span class="hl ink" style="top:4%;font-size:8pt">New in.</span></div><span class="cap">01 Cover</span></div>
+<div class="fig s"><div class="fr t34"><img alt="" class="ph" src="assets/social-media-guidelines/c7dc3108-462b-45b5-8b54-671b76ef47b9.jpg" style="transform:scale(2.3);transform-origin:50% 30%"/><span class="pr" style="bottom:5%;white-space:nowrap;background:#fff;padding:2px 4px;border-radius:2px">Jacket · €420.00</span></div><span class="cap">02 Jacket</span></div>
+<div class="fig s"><div class="fr t34"><img alt="" class="ph" src="assets/social-media-guidelines/c7dc3108-462b-45b5-8b54-671b76ef47b9.jpg" style="transform:scale(1.9);transform-origin:50% 62%"/><span class="pr" style="bottom:5%;white-space:nowrap;background:#fff;padding:2px 4px;border-radius:2px">Dress · €380.00</span></div><span class="cap">03 Dress</span></div>
+<div class="fig s"><div class="fr t34"><img alt="" class="ph" src="assets/social-media-guidelines/c7dc3108-462b-45b5-8b54-671b76ef47b9.jpg" style="object-position:50% 100%;transform:scale(2.6);transform-origin:52% 97%"/><span class="pr" style="bottom:5%;white-space:nowrap;background:#fff;padding:2px 4px;border-radius:2px">Sandal · €190.00</span></div><span class="cap">04 Sandal</span></div>
+<div class="fig s"><div class="fr t34"><div style="position:absolute;inset:0;background:var(--surface-ink)"></div><span class="hl" style="top:28%;font-size:8pt">Shop the<br/>full look.</span><span class="btn w" style="bottom:16%">Shop now</span></div><span class="cap">05 CTA</span></div>
+</div>
+<h3>Example B — Black and white, three ways · 5 slides</h3>
+<div class="row">
+<div class="fig s"><div class="fr t34"><div style="position:absolute;inset:0;background:#fff"></div><span class="eb ink" style="top:12%">The edit</span><span class="hl ink" style="top:20%;font-size:8pt">Black and white,<br/><span class="it">three</span> ways.</span></div><span class="cap">01 Cover</span></div>
+<div class="fig s"><div class="fr t34" style="background:linear-gradient(rgb(253,253,253) 0%,rgb(253,253,253) 14.8%,rgb(253,253,253) 18.4%,rgb(253,253,253) 22.0%,rgb(254,254,254) 25.5%,rgb(253,253,253) 29.1%,rgb(253,253,253) 32.7%,rgb(253,254,253) 36.3%,rgb(252,253,253) 39.9%,rgb(253,254,254) 43.5%,rgb(253,254,254) 47.0%,rgb(252,253,253) 50.6%,rgb(252,253,253) 54.2%,rgb(252,253,252) 57.8%,rgb(252,252,252) 61.4%,rgb(252,253,253) 65.0%,rgb(252,253,253) 68.5%,rgb(252,253,252) 72.1%,rgb(253,253,253) 75.7%,rgb(253,253,253) 79.3%,rgb(251,252,253) 82.9%,rgb(249,249,249) 86.5%,rgb(248,248,248) 90.0%,rgb(249,249,250) 93.6%,rgb(251,251,251) 97.2%)"><img alt="" class="ph c" src="assets/social-media-guidelines/cb8f2c39-5f27-4df6-9946-5cca4ded3215.jpg"/><span class="eb pl" style="top:4%">01 · Shirt</span></div><span class="cap">02 Look</span></div>
+<div class="fig s"><div class="fr t34" style="background:linear-gradient(rgb(252,252,252) 0%,rgb(252,252,252) 7.2%,rgb(252,252,252) 11.6%,rgb(252,252,252) 16.0%,rgb(254,254,254) 20.5%,rgb(254,254,254) 24.9%,rgb(254,254,254) 29.3%,rgb(254,254,254) 33.7%,rgb(253,253,253) 38.1%,rgb(253,253,253) 42.5%,rgb(252,253,253) 47.0%,rgb(252,252,252) 51.4%,rgb(250,252,252) 55.8%,rgb(250,252,251) 60.2%,rgb(251,253,252) 64.6%,rgb(250,252,252) 69.0%,rgb(252,253,253) 73.5%,rgb(254,254,254) 77.9%,rgb(251,253,252) 82.3%,rgb(243,245,244) 86.7%,rgb(245,247,247) 91.1%,rgb(244,247,246) 95.5%,rgb(241,241,241) 100.0%,rgb(241,241,241) 104.4%,rgb(241,241,241) 108.8%)"><img alt="" class="ph c" src="assets/social-media-guidelines/070b7fab-d7c1-40ad-a60c-c616194366a5.jpg" style="top:5%;height:106%"/><span class="eb pl" style="top:4%">02 · Jacket</span></div><span class="cap">03 Look</span></div>
+<div class="fig s"><div class="fr t34" style="background:linear-gradient(rgb(248,250,249) 0%,rgb(248,250,249) 7.2%,rgb(248,250,249) 11.6%,rgb(248,250,249) 16.0%,rgb(250,252,251) 20.5%,rgb(250,252,251) 24.9%,rgb(249,251,251) 29.3%,rgb(250,252,251) 33.7%,rgb(249,251,251) 38.1%,rgb(250,252,251) 42.5%,rgb(249,251,251) 47.0%,rgb(249,251,251) 51.4%,rgb(250,252,251) 55.8%,rgb(250,252,251) 60.2%,rgb(249,251,251) 64.6%,rgb(249,251,251) 69.0%,rgb(249,251,250) 73.5%,rgb(250,252,251) 77.9%,rgb(245,247,247) 82.3%,rgb(240,242,241) 86.7%,rgb(243,245,245) 91.1%,rgb(245,247,246) 95.5%,rgb(243,245,244) 100.0%,rgb(243,245,244) 104.4%,rgb(243,245,244) 108.8%)"><img alt="" class="ph c" src="assets/social-media-guidelines/aacd10eb-77a2-4904-be58-e16057723d08.jpg" style="top:5%;height:106%"/><span class="eb pl" style="top:4%">03 · Coat</span></div><span class="cap">04 Look</span></div>
+<div class="fig s"><div class="fr t34"><div style="position:absolute;inset:0;background:#fff"></div><span class="hl ink" style="top:26%;font-size:8pt">Which one<br/>is yours?</span><span class="btn" style="bottom:16%">Save this look</span></div><span class="cap">05 Question</span></div>
+</div>
+<h3>Example C — App announcement · 3 slides</h3>
+<div class="row">
+<div class="fig s"><div class="fr t34"><img alt="" class="ph" src="assets/social-media-guidelines/96a2ce7e-c935-4543-b6bd-a9342b6176d7.jpg"/></div><span class="cap">01 Cover</span><span class="cap2">The app's own intro frame</span></div>
+<div class="fig s"><div class="fr t34"><img alt="" class="ph" src="assets/social-media-guidelines/a5821045-f454-428a-9ede-53de55aa8099.png"/><span class="sub" style="bottom:8%">Build a full look from your closet.</span></div><span class="cap">02 What</span></div>
+<div class="fig s"><div class="fr t34"><div style="position:absolute;inset:0;background:#fff"></div><span class="hl ink" style="top:22%;font-size:6.5pt;text-transform:none;font-family:var(--font-functional);line-height:1.3">Update Grimmor to version 4.2 to try it.</span><span class="btn" style="bottom:16%">Update the app</span></div><span class="cap">03 How</span></div>
+</div>
+<ul>
+<li>Cover headline: <strong>5 words or fewer</strong>. Middle slides: one garment, one credit each.</li>
+<li>Keep the headline and eyebrow in the same position on every slide so swiping feels like turning pages.</li>
+<li>Show full looks with the whole figure in frame; use push-in crops only for single garments.</li>
+<li>Announcements: brand headline on the cover, product-voice instructions after it.</li>
+</ul>
+<div class="sec" id="c12"><span class="num">12</span><h2>Stories</h2></div>
+<p class="lede">Stories are daily and close: new arrivals, behind the scenes, Mira's notes, polls, try-ons. One message per frame, 3–6 frames per sequence, CTA on the last frame.</p>
+<div class="row">
+<div class="fig"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/cb8f2c39-5f27-4df6-9946-5cca4ded3215.jpg"/><span class="seg2" style="filter:invert(1)"><i class="on"></i><i></i><i></i></span><span class="stk" style="bottom:24%;border:1px solid var(--divider)"><b>Loafer or boot?</b><span><i>Loafer</i><i>Boot</i></span></span></div><span class="cap">Poll</span><span class="cap2">One sticker, short either/or question.</span></div>
+<div class="fig"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/a4eb8491-7f3f-4bcd-af42-0e5c87ed09e7.jpg"/><span class="seg2" style="filter:invert(1)"><i class="on"></i><i class="on"></i><i></i></span><span class="mira" style="bottom:22%"><b>MIRA:</b> Swap the cargo trousers for pleated wool and it goes to dinner.</span></div><span class="cap">Mira's note</span><span class="cap2">Vermilion bubble, labelled MIRA:</span></div>
+<div class="fig"><div class="fr"><img alt="" class="ph" src="assets/social-media-guidelines/0ba7b628-c4e1-48b6-b511-04b7c816a369.jpg"/><span class="seg2" style="filter:invert(1)"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="eb pl" style="top:15%">Behind the scenes</span><span class="sub" style="bottom:24%">Day two of the studio shoot.</span></div><span class="cap">Behind the scenes</span><span class="cap2">Eyebrow + one line.</span></div>
+<div class="fig"><div class="fr"><img alt="" class="ph low" src="assets/social-media-guidelines/12df2883-7138-49b3-9567-b94b2044d4da.jpg"/><span class="seg2" style="filter:invert(1)"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="hl ink" style="top:6%;font-size:10pt">New in.</span><span class="btn" style="bottom:24%">Shop the look</span></div><span class="cap">Last frame</span><span class="cap2">Link sticker = the CTA.</span></div>
+</div>
+<div class="dl">
+<div class="hd">Do</div><div class="hd no">Don't</div>
+<div>Use Grimmor's Story templates — fixed headline and plate positions.</div><div>Use the app's built-in fonts, colours or text backgrounds.</div>
+<div>One interactive sticker (poll, question, link, product tag) per frame.</div><div>Stack GIFs, emoji, music stickers, location and mention stickers.</div>
+<div>Keep text 270 px from the top and 670 px from the bottom.</div><div>Put text where the reply bar or profile name covers it.</div>
+<div>Ask specific either/or questions: "Loafer or boot?"</div><div>Ask vague questions: "Thoughts??"</div>
+</div>
+<div class="sec" id="c13"><span class="num">13</span><h2>Captions</h2></div>
+<p class="lede">The first line is all most people read before "more". Make it count, then add what the picture can't say.</p>
+<table><thead><tr><th>Part</th><th>Rule</th></tr></thead><tbody>
+<tr><td><strong>1 · Hook</strong></td><td>Instagram: 5 words or fewer, UPPERCASE — the same limit as on-screen text. TikTok: start with the search phrase in sentence case.</td></tr>
+<tr><td><strong>2 · Body</strong></td><td>1–2 sentences. Name the garment in plain, searchable words.</td></tr>
+<tr><td><strong>3 · Credits</strong></td><td>Item · Brand · €000.00, one line per item.</td></tr>
+<tr><td><strong>4 · CTA</strong></td><td>One. App verbs, or one specific either/or question.</td></tr>
+<tr><td><strong>5 · Hashtags</strong></td><td>3–5 at the end. Always #Grimmor.</td></tr>
+</tbody></table>
+<p>No emoji — the middle dot · is our only separator. No exclamation marks, no "link in bio" arrows, no tagging walls. Instagram: under 300 characters before credits. TikTok: 150–225 characters total.</p>
+<div class="case"><p class="tg"><b>Case 1</b> · Campaign Reel · Instagram</p>
+<div class="cx"><p class="h">BUY LESS. WEAR MORE.</p><p>One long wool coat, worn every day from October to March.</p><p>Coat · Grimmor Edit · €640.00</p><p>Shop the look — link in bio.</p><p>#Grimmor #BuyLessWearMore #WoolCoat</p></div>
+<ul class="why"><li>Hook is the campaign line — brand voice.</li><li>Body names the garment: "long wool coat" is searchable.</li><li>One CTA, three tags.</li></ul></div>
+<div class="case"><p class="tg"><b>Case 2</b> · Product carousel · Instagram</p>
+<div class="cx"><p class="h">NEW IN. THE IVORY JACKET.</p><p>A cropped ivory jacket, a draped black dress and flat leather sandals. Swipe for each piece.</p><p>Jacket · Grimmor Edit · €420.00<br/>Dress · Grimmor Edit · €380.00<br/>Sandal · Grimmor Edit · €190.00</p><p>Tap a product tag to shop.</p><p>#Grimmor #TheGlobalCloset #NewIn</p></div>
+<ul class="why"><li>"Swipe" tells people there is more — it keeps them on the post.</li><li>Credits match the slides, in order.</li></ul></div>
+<div class="case"><p class="tg"><b>Case 3</b> · Styling how-to · TikTok</p>
+<div class="cx"><p>How to style a long black coat two ways: charcoal trousers for day, ivory for evening. Only one piece changes.</p><p>Try it on in the Grimmor Fitting Room.</p><p>#Grimmor #BlackCoat #StylingTips</p></div>
+<ul class="why"><li>Opens with the search phrase "how to style a long black coat".</li><li>About 160 characters — fits without "more".</li></ul></div>
+<div class="case"><p class="tg"><b>Case 4</b> · Creator partnership · Instagram (Paid partnership label on)</p>
+<div class="cx"><p class="h">MY ONLY COAT THIS WINTER.</p><p>I tried the long wool coat in the @grimmor Fitting Room before I ordered it. Fit was exactly what I saw.</p><p>Coat · Grimmor Edit · €640.00</p><p>Try it on in the Fitting Room.</p><p>#Grimmor #ad #WinterCoat</p></div>
+<ul class="why"><li>Creator speaks in first person — their voice, our rules.</li><li>Platform label + #ad. Both, always.</li></ul></div>
+<div class="case"><p class="tg"><b>Case 5</b> · Community question · Instagram</p>
+<div class="cx"><p class="h">LOAFER OR BOOT?</p><p>Same trousers, two shoes. Tell us which one you'd wear.</p><p>#Grimmor #TheGlobalCloset</p></div>
+<ul class="why"><li>A specific either/or question gets more comments than "Thoughts?".</li><li>No credits needed — it's a conversation post.</li></ul></div>
+<div class="case"><p class="tg"><b>Case 6</b> · App feature · Instagram + TikTok</p>
+<div class="cx"><p class="h">NEW IN THE FITTING ROOM.</p><p>You can now build a full look from your closet and try it on before you buy. Update Grimmor to version 4.2.</p><p>Update the app — link in bio.</p><p>#Grimmor #FittingRoom</p></div>
+<ul class="why"><li>Brand headline, then plain product-voice instructions.</li><li>Says exactly what's new and what to do.</li></ul></div>
+<div class="case"><p class="tg"><b>Case 7</b> · Repost of a member's look · Instagram</p>
+<div class="cx"><p class="h">THE CUT DOES THE WORK.</p><p>Black tailoring, nothing else. Photo @handle</p><p>Shop similar in the app.</p><p>#Grimmor #TheGlobalCloset</p></div>
+<ul class="why"><li>Credit the creator first, with permission secured.</li><li>Their photo stays untouched — no grade, no logo.</li></ul></div>
+<div class="case"><p class="tg"><b>Case 8</b> · Ask Mira · TikTok</p>
+<div class="cx"><p>What to wear with cream trousers, according to Mira. A dark polo and white trainers — tonal on top, one sporty note at the foot.</p><p>Ask Mira in the Grimmor app.</p><p>#Grimmor #AIStylist #CreamTrousers</p></div>
+<ul class="why"><li>Keyword first: "what to wear with cream trousers".</li><li>Mira's words are real app output, quoted exactly.</li></ul></div>
+<h4>Write / avoid</h4>
+<table><thead><tr><th>Write</th><th>Avoid</th></tr></thead><tbody>
+<tr><td>BUY LESS. WEAR MORE.</td><td>OMG you NEED this coat!!</td></tr>
+<tr><td>One long wool coat, worn every day.</td><td>Obsessed with this vibe tbh</td></tr>
+<tr><td>Shop the look — link in bio.</td><td>Link in bio, go go go</td></tr>
+<tr><td>Loafer or boot?</td><td>Thoughts?? Let me know in the comments below</td></tr>
+</tbody></table>
+<div class="sec" id="c14"><span class="num">14</span><h2>CTAs &amp; hashtags</h2></div>
+<div class="grid2">
+<div><h4>Approved CTAs — one per post</h4><p>SHOP THE LOOK · TRY IT ON IN THE FITTING ROOM · ASK MIRA · SAVE THIS LOOK · ADD TO CLOSET · DOWNLOAD GRIMMOR · UPDATE THE APP</p><p>On screen: uppercase in an ink or white plate. In captions: as a sentence — "Shop the look — link in bio."</p></div>
+<div><h4>Hashtags — 3 to 5</h4><p><strong>Always:</strong> #Grimmor<br/><strong>Brand:</strong> #TheGlobalCloset · campaign: #BuyLessWearMore<br/><strong>Specific:</strong> the garment or topic — #WoolCoat, #BlackSuit, #StylingTips<br/><strong>Paid:</strong> #ad alongside the platform label</p><p>No banned, unrelated or trending-only tags. Never more than 5.</p></div>
+</div>
+<div class="sec" id="c15"><span class="num">15</span><h2>Tone of voice</h2></div>
+<p class="lede">Grimmor has two voices. <strong>Brand voice</strong> creates desire. <strong>Product voice</strong> helps someone do something. Creators speak in their own words — inside these limits.</p>
+<table><thead><tr><th>Situation</th><th>Voice</th><th>Example</th></tr></thead><tbody>
+<tr><td>Headline, hook, campaign</td><td>Brand — short, confident</td><td>THE QUIET UNIFORM.</td></tr>
+<tr><td>Explaining a feature or how-to</td><td>Product — plain, exact</td><td>Pick a top, add trousers, then tap Try On.</td></tr>
+<tr><td>Comment: praise</td><td>Brand, one line</td><td>It's the cut. Thank you.</td></tr>
+<tr><td>Comment: question</td><td>Product</td><td>Yes, sizes 34–46. Tap the product tag to see stock.</td></tr>
+<tr><td>Complaint, order or account</td><td>Don't answer — redirect</td><td>Please message @grimmor directly. They'll sort it out.</td></tr>
+</tbody></table>
+<div class="dl">
+<div class="hd">Do</div><div class="hd no">Don't</div>
+<div>Be specific about clothes: fabric, cut, how it moves.</div><div>Use hype words: obsessed, insane, must-have, game-changer.</div>
+<div>Speak as yourself in your own content.</div><div>Speak for Grimmor: promise prices, delivery, refunds or features.</div>
+<div>Say what you actually did in the app.</div><div>Make claims about sustainability, quality or results we haven't approved.</div>
+<div>Stay calm with critical comments.</div><div>Argue, use sarcasm, or reply to trolls.</div>
+</div>
+<div class="sec" id="c16"><span class="num">16</span><h2>Showing the app &amp; Mira</h2></div>
+<div class="grid2">
+<div><h4>Screen recordings</h4><ul><li>Latest app version, on the demo account we provide.</li><li>Notifications off, full battery, clean status bar.</li><li>Real recordings only — never mock up or edit the interface.</li><li>Recording fills the frame; add subtitles describing each tap.</li></ul></div>
+<div><h4>Mira</h4><ul><li>Show Mira's real replies. Quote her exactly.</li><li>On screen she always appears in her vermilion bubble, labelled MIRA:.</li><li>Never write words for Mira, or present your opinion as hers.</li><li>The Fitting Room is model-free: don't present it as a photo of a real person. If a post shows an AI-generated or AI-altered person, use Instagram's AI label.</li></ul></div>
+</div>
+<div class="sec" id="c17"><span class="num">17</span><h2>Disclosure, rights &amp; safety</h2></div>
+<div class="grid3">
+<div><h4>Disclosure</h4><p>Every paid or gifted post carries the platform's paid-partnership label <strong>and</strong> #ad. No exceptions, no hiding it in the hashtags.</p></div>
+<div><h4>Rights</h4><p>Music must be licensed for commercial use. Everyone shown has signed a release. Locations are permitted. Reposts need written permission from the creator.</p></div>
+<div><h4>Brand safety</h4><p>No competitor logos in shot, no alcohol, smoking, political or sensitive content alongside Grimmor, no prices or discounts that aren't in the brief.</p></div>
+</div>
+<div class="sec" id="c18"><span class="num">18</span><h2>Delivery &amp; approval</h2></div>
+<table><thead><tr><th>Item</th><th>Spec</th></tr></thead><tbody>
+<tr><td>Video</td><td>MP4, H.264, 1080 × 1920, 30 fps, AAC audio 48 kHz. No platform watermark. Plus a version without burned-in subtitles.</td></tr>
+<tr><td>Stills</td><td>JPG or PNG, sRGB, 1080 × 1440 minimum (3:4). Original high-res files as well.</td></tr>
+<tr><td>Copy</td><td>Caption, hashtags, alt text and subtitles as plain text.</td></tr>
+<tr><td>File names</td><td>GRIMMOR_campaign_creator_format_v01 — e.g. GRIMMOR_winter26_lena_reel_v01.mp4</td></tr>
+<tr><td>Approval</td><td>Submit 72 hours before publishing. Up to 2 rounds of changes. Publish only after written approval.</td></tr>
+<tr><td>Alt text</td><td>Plain description of the look: "Woman in an ivory suit and black knit, standing against a concrete wall."</td></tr>
+</tbody></table>
+<div class="sec" id="c19"><span class="num">19</span><h2>Before you publish</h2></div>
+<ul class="check">
+<li>Correct size: 9:16 video, 3:4 stills</li>
+<li>Text, symbol and CTA inside the safe zone</li>
+<li>Opens on the look — no intro</li>
+<li>Cool grade, no filters, full silhouette</li>
+<li>Jost + DM Sans only; no platform fonts</li>
+<li>One headline, one CTA, one vermilion mark</li>
+<li>Subtitles burned in, fixed position, ≤32 characters per line, ≤17 per second; alt text written</li>
+<li>Caption hook in line one; no emoji</li>
+<li>3–5 hashtags including #Grimmor</li>
+<li>@grimmor and product tags added</li>
+<li>Paid-partnership label and #ad</li>
+<li>Music licensed; releases signed</li>
+<li>Clean file per platform, no watermark</li>
+<li>Written approval received</li>
+</ul>
+</doc-page>
+<script src="assets/social-media-guidelines/ca321deb-6bd9-4e17-8e34-446555a98d9a.js"></script>
+</body></html>
