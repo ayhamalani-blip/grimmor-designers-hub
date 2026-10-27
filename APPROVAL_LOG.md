@@ -43,3 +43,14 @@
 - **Design or product notes:** Publish the complete latest artifact package as local static assets, retain the Grimmor editorial document treatment, and remove third-party artifact branding from the public page.
 - **Implementation PR:** #4 — browser flows and GitHub Actions verification passed on 2026-10-27; approved for merge to `main`.
 - **Validation:** Verify all 19 sections and contents links; confirm every current local image, SVG, font, and runtime asset resolves; verify local fonts, Back to Homepage, static checks, GitHub Actions, and live Pages deployment.
+
+## AL-0005 — Restart Opening Film when Play is pressed
+
+- **Status:** Approved
+- **Approved by:** ayhamalani-blip (`@ayhamalani-blip`)
+- **Approved on:** 2026-10-27
+- **Scope:** Make the Opening Film player reset its complete 21.2-second timeline to `0:00` whenever a paused or finished film is started through its Play control, then begin playback from the first frame. Preserve normal pause behavior while the film is already playing.
+- **Exclusions:** Changes to the film media, scene order, duration, player layout, export behavior, resource navigation, other Hub pages, custom domain, release tag, or repository visibility.
+- **Design or product notes:** Reuse the player’s existing “Return to start” behavior so all six scene videos and the displayed timeline reset together. No visual redesign.
+- **Implementation PR:** #5 — browser flows and GitHub Actions verification passed on 2026-10-27; approved for merge to `main`.
+- **Validation:** Verify a paused or ended film starts from `0:00` after Play; verify Play while playing pauses without resetting; verify the return-to-start control and Back to Homepage remain functional; run static checks and GitHub Actions.
