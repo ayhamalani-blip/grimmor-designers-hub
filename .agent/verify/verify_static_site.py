@@ -11,7 +11,7 @@ resource_pages = [
 ]
 required = [
     'index.html', *resource_pages, 'README.txt',
-    '.nojekyll', 'grimmor-resource-navigation.js',
+    '.nojekyll', 'grimmor-resource-navigation.js', 'grimmor-film-restart.js',
     'assets/lottie/grimmor-4A-logo-reveal.json',
     'assets/lottie/grimmor-4G-vermilion-turn.json',
     'assets/svg/grimmor-wordmark.svg',
@@ -34,6 +34,20 @@ for target in resource_pages:
     content = (root / target).read_text(encoding='utf-8')
     if content.count('grimmor-resource-navigation.js') != 1:
         raise SystemExit(f'{target} must load the shared navigation enhancement exactly once.')
+
+film = (root / '04 Opening Film.html').read_text(encoding='utf-8')
+if film.count('grimmor-film-restart.js') != 1:
+    raise SystemExit('Opening Film must load the restart enhancement exactly once.')
+
+film_restart = (root / 'grimmor-film-restart.js').read_text(encoding='utf-8')
+for needle in [
+    'Play/pause (space)',
+    'Return to start (0)',
+    'video.currentTime = 0',
+    "document.addEventListener('click', interceptPlayRequest, true)",
+]:
+    if needle not in film_restart:
+        raise SystemExit(f'Opening Film restart enhancement is missing required behavior: {needle}')
 
 script = (root / 'grimmor-resource-navigation.js').read_text(encoding='utf-8')
 for needle in [

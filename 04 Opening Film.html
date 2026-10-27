@@ -308,8 +308,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     // createElement so they execute, awaiting onload for src scripts to
     // preserve ordering (React before ReactDOM before Babel before text/babel).
     const grimmorNavigationScript = '<script src="grimmor-resource-navigation.js"></' + 'script>';
+    const grimmorFilmRestartScript = '<script src="grimmor-film-restart.js"></' + 'script>';
     template = template.replace(/<head[^>]*>/i, function (headOpen) {
-      return headOpen + grimmorNavigationScript;
+      return headOpen + grimmorNavigationScript + grimmorFilmRestartScript;
     });
     const doc = new DOMParser().parseFromString(template, 'text/html');
     document.documentElement.replaceWith(doc.documentElement);

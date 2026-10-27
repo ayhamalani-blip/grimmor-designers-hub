@@ -7,6 +7,9 @@ All notable user-visible changes to Grimmor Designers Hub are documented here.
 ### Added
 - Social Media Design Guidelines: a 19-section resource for creators publishing on Instagram and TikTok.
 
+### Fixed
+- The Opening Film now restarts from `0:00` whenever playback is started after pausing or ending.
+
 ### Changed
 - Replaced the Social Media Design Guidelines chapter with the latest user-supplied artifact revision.
 - Start Here Q&A cards now open only their related Design Guidelines section.
