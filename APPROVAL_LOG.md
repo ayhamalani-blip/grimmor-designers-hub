@@ -41,5 +41,5 @@
 - **Scope:** Replace the published Social Media Design Guidelines chapter and its dependency package with the current version at the user-provided Claude artifact URL. Retain the existing fifth Resources item, public chapter path, and Back to Homepage behavior.
 - **Exclusions:** Changes to the chapter URL or resource-card wording; changes to other Hub pages, Q&A destinations, developer-file catalogue, custom domain, release tag, or repository visibility.
 - **Design or product notes:** Publish the complete latest artifact package as local static assets, retain the Grimmor editorial document treatment, and remove third-party artifact branding from the public page.
-- **Implementation PR:** #4 — validation pending before merge to `main`.
+- **Implementation PR:** #4 — browser flows and GitHub Actions verification passed on 2026-10-27; approved for merge to `main`.
 - **Validation:** Verify all 19 sections and contents links; confirm every current local image, SVG, font, and runtime asset resolves; verify local fonts, Back to Homepage, static checks, GitHub Actions, and live Pages deployment.
