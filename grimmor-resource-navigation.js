@@ -5,7 +5,8 @@
     '02 Logo Guidelines.html',
     '03 Logo in Motion.html',
     '04 Opening Film.html',
-    '05 Design Guidelines.html'
+    '05 Design Guidelines.html',
+    '06 Social Media Guidelines.html'
   ]);
 
   const focusedSections = {
@@ -126,6 +127,36 @@
     });
   }
 
+  function addSocialMediaGuidelineResource() {
+    if (filename !== 'index.html') return;
+
+    const socialGuidelinePath = '06%20Social%20Media%20Guidelines.html';
+    if (document.querySelector(`a[href="${socialGuidelinePath}"]`)) return;
+
+    const designGuidelines = [...document.querySelectorAll('a[href]')].find((link) => {
+      return link.getAttribute('href') === '05%20Design%20Guidelines.html'
+        && link.textContent.replace(/\s+/g, ' ').trim().startsWith('04 DESIGN GUIDELINES');
+    });
+    if (!designGuidelines || !designGuidelines.parentElement) return;
+
+    const socialGuidelines = designGuidelines.cloneNode(true);
+    socialGuidelines.setAttribute('href', socialGuidelinePath);
+    socialGuidelines.setAttribute('aria-label', 'Open Social Media Design Guidelines');
+
+    const [number, summary, action] = socialGuidelines.children;
+    if (number) number.textContent = '05';
+    if (summary) {
+      const [title, description] = summary.children;
+      if (title) title.textContent = 'SOCIAL MEDIA GUIDELINES';
+      if (description) {
+        description.textContent = 'The 19-chapter creator handbook: platforms, formats, safe zones, reels, stories, captions and approval.';
+      }
+    }
+    if (action) action.textContent = 'OPEN';
+
+    designGuidelines.parentElement.appendChild(socialGuidelines);
+  }
+
   function applyFocusedGuidelineView() {
     if (filename !== '05 Design Guidelines.html') return;
 
@@ -160,6 +191,7 @@
     addStyles();
     addBackToHomepage();
     setFocusedQuestionLinks();
+    addSocialMediaGuidelineResource();
     applyFocusedGuidelineView();
   }
 
@@ -171,8 +203,11 @@
         return link.textContent.trim().startsWith(question);
       });
     });
+    const resourceCardReady = !needsHomepage || Boolean(
+      document.querySelector('a[href="05%20Design%20Guidelines.html"]')
+    );
 
-    if ((!needsGuidelinePage || document.querySelector('doc-page')) && homepageReady) {
+    if ((!needsGuidelinePage || document.querySelector('doc-page')) && homepageReady && resourceCardReady) {
       initialise();
       return;
     }
