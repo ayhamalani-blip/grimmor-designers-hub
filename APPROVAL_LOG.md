@@ -52,5 +52,5 @@
 - **Scope:** Make the Opening Film player reset its complete 21.2-second timeline to `0:00` whenever a paused or finished film is started through its Play control, then begin playback from the first frame. Preserve normal pause behavior while the film is already playing.
 - **Exclusions:** Changes to the film media, scene order, duration, player layout, export behavior, resource navigation, other Hub pages, custom domain, release tag, or repository visibility.
 - **Design or product notes:** Reuse the player’s existing “Return to start” behavior so all six scene videos and the displayed timeline reset together. No visual redesign.
-- **Implementation PR:** #5 — validation pending before merge to `main`.
+- **Implementation PR:** #5 — browser flows and GitHub Actions verification passed on 2026-10-27; approved for merge to `main`.
 - **Validation:** Verify a paused or ended film starts from `0:00` after Play; verify Play while playing pauses without resetting; verify the return-to-start control and Back to Homepage remain functional; run static checks and GitHub Actions.
