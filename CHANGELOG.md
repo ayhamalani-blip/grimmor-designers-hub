@@ -11,6 +11,7 @@ All notable user-visible changes to Grimmor Designers Hub are documented here.
 - The Opening Film now restarts from `0:00` whenever playback is started after pausing or ending.
 
 ### Changed
+- Social Media Guidelines: changed the text-behind-objects guidance from “Not required” to “Preferred - Not Prerequisite.”; all other document content and styling remain unchanged (AL-0006).
 - Replaced the Social Media Design Guidelines chapter with the latest user-supplied artifact revision.
 - Start Here Q&A cards now open only their related Design Guidelines section.
 - Added a Back to Homepage action to all resource pages and focused guideline views.

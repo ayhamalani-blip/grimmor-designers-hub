@@ -54,3 +54,14 @@
 - **Design or product notes:** Reuse the player’s existing “Return to start” behavior so all six scene videos and the displayed timeline reset together. No visual redesign.
 - **Implementation PR:** #5 — browser flows and GitHub Actions verification passed on 2026-10-27; approved for merge to `main`.
 - **Validation:** Verify a paused or ended film starts from `0:00` after Play; verify Play while playing pauses without resetting; verify the return-to-start control and Back to Homepage remain functional; run static checks and GitHub Actions.
+
+## AL-0006 — Clarify text-behind-objects preference
+
+- **Status:** Approved
+- **Approved by:** ayhamalani-blip (`@ayhamalani-blip`)
+- **Approved on:** 2026-11-27
+- **Scope:** In the Social Media Guidelines document, replace “Not required” after “Option: text behind objects.” with the exact requested wording “Preferred - Not Prerequisite.” Preserve the existing explanatory continuation.
+- **Exclusions:** Any other guideline copy, styling, layout, images, fonts, navigation, other Hub pages, deployment settings, or repository visibility changes.
+- **Design or product notes:** Copy-only update; preserve the existing HTML and Grimmor document treatment.
+- **Implementation PR:** #6 — copy-only scope reviewed; exact byte-level comparison and local static-site verification passed on 2026-11-27. GitHub Actions verification is required before merge.
+- **Validation:** Run the existing static-site verification; confirm the document diff is exactly the approved text replacement; require successful GitHub Actions verification before merge and verify the new text on the live GitHub Pages document after deployment.
