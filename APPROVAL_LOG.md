@@ -63,5 +63,5 @@
 - **Scope:** In the Social Media Guidelines document, replace “Not required” after “Option: text behind objects.” with the exact requested wording “Preferred - Not Prerequisite.” Preserve the existing explanatory continuation.
 - **Exclusions:** Any other guideline copy, styling, layout, images, fonts, navigation, other Hub pages, deployment settings, or repository visibility changes.
 - **Design or product notes:** Copy-only update; preserve the existing HTML and Grimmor document treatment.
-- **Implementation PR:** Pending.
+- **Implementation PR:** #6 — copy-only scope reviewed; exact byte-level comparison and local static-site verification passed on 2026-11-27. GitHub Actions verification is required before merge.
 - **Validation:** Run the existing static-site verification; confirm the document diff is exactly the approved text replacement; require successful GitHub Actions verification before merge and verify the new text on the live GitHub Pages document after deployment.
